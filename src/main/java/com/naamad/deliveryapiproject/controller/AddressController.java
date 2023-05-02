@@ -17,7 +17,7 @@ public class AddressController {
 
     @PostMapping("/resolve-address")
     @ResponseStatus(HttpStatus.OK)
-    public AddressResponse getStructuredAddress(@RequestBody AddressRequest addressRequest) throws JsonProcessingException {
+    public AddressResponse resolveAddress(@RequestBody AddressRequest addressRequest) throws JsonProcessingException {
         return addressService.resolveAddress(addressRequest);
     }
 }

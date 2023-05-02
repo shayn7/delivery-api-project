@@ -45,7 +45,7 @@ public class AddressServiceImpl implements AddressService{
     private String getJsonResponseFromExternalApi(AddressRequest addressRequest) {
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
-                .queryParam("text", addressRequest.getSearchTerm())
+                .queryParam("text", addressRequest.searchTerm())
                 .queryParam("apiKey", apiKey)
                 .build())
                 .retrieve()
