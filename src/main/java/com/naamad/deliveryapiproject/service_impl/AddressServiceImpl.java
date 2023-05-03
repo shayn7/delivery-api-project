@@ -1,10 +1,11 @@
-package com.naamad.deliveryapiproject.service;
+package com.naamad.deliveryapiproject.service_impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.naamad.deliveryapiproject.dto.AddressRequest;
 import com.naamad.deliveryapiproject.dto.AddressResponse;
+import com.naamad.deliveryapiproject.service.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -14,7 +15,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @PropertySource("external-rest-provider.properties")
 @RequiredArgsConstructor
 @Service
-public class AddressServiceImpl implements AddressService{
+public class AddressServiceImpl implements AddressService {
 
     private final WebClient webClient;
     private final ObjectMapper objectMapper;
@@ -34,7 +35,7 @@ public class AddressServiceImpl implements AddressService{
                 .builder()
                 .line1(propertiesNode.get("address_line1").textValue())
                 .line2(propertiesNode.get("address_line2").textValue())
-                .street(propertiesNode.get("street").textValue())
+                .street(propertiesNode.get("address_line1").textValue())
                 .city(propertiesNode.get("city").textValue())
                 .postcode(propertiesNode.get("postcode").textValue())
                 .county(propertiesNode.get("county").textValue())
