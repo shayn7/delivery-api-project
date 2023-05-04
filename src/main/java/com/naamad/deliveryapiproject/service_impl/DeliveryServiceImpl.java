@@ -12,7 +12,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -36,6 +38,11 @@ public class DeliveryServiceImpl implements DeliveryService, CommandLineRunner {
         Optional<Delivery> delivery = deliveryRepository.findById(id);
         if(delivery.isEmpty()) throw new RuntimeException("delivery not found");
         deliveryRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Delivery> getAllDeliveriesForToday() {
+        return deliveryRepository.findAll().stream().filter(e->e.getCreatedAt().equals(LocalDate.now().toString())).collect(Collectors.toList());
     }
 
     private Delivery mapToDelivery(Timeslot timeslot, User user) {

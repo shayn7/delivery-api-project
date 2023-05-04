@@ -22,4 +22,5 @@ public class Delivery {
     @DBRef
     private Timeslot timeslot;
     private User user;
+    private String createdAt;
 }
