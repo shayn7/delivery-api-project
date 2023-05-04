@@ -1,18 +1,10 @@
 package com.naamad.deliveryapiproject.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Address {
-    private String street;
-    private String line1;
-    private String line2;
-    private String postcode;
-    private String country;
+public record Address(String line1,
+                      String line2,
+                      String street,
+                      String city,
+                      String county,
+                      String postcode,
+                      String country) {
 }
